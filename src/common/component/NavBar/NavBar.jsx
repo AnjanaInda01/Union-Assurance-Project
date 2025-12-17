@@ -1,11 +1,10 @@
 import React from "react";
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import logo from "../../../assets/logo.png";
 import ActionBtn from "../Button/ActionBtn/ActionBtn";
 
-export default function NavBar() {
+export default function NavBar({actionBtn,progressbar}) {
   return (
     <AppBar
       position="sticky"
@@ -29,7 +28,8 @@ export default function NavBar() {
         }}
       >
         <img src={logo} alt="" style={{ width: "200px", height: "auto" }} />
-        <ActionBtn lable={"Already have a account"} />
+        {actionBtn}
+        {progressbar}
       </Toolbar>
     </AppBar>
   );

@@ -6,11 +6,12 @@ import NavBtn from "../../common/component/Button/NavBtn/NavBtn";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Box, Typography } from "@mui/material";
 import loadImage from "../../assets/loadImg2.png";
+import ActionBtn from "../../common/component/Button/ActionBtn/ActionBtn";
 
 export default function LoadingPage2() {
   return (
     <div className="content">
-      <NavBar />
+      <NavBar actionBtn={<ActionBtn lable="Already have a account"/>} />
       <Box
         sx={{
           display: "flex",
