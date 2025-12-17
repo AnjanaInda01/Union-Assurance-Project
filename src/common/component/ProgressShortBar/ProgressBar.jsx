@@ -28,6 +28,7 @@ export default function ProgressBar({label}) {
         variant="h6"
         sx={{
           fontWeight: 600,
+          color:'#18191F'
         }}
       >
         {label}

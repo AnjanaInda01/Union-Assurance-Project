@@ -4,7 +4,6 @@ import ProgressBar from "../../common/component/ProgressShortBar/ProgressBar";
 import "./style.css";
 import Footer from "../../common/component/Footer/Footer";
 import { Box } from "@mui/material";
-import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
@@ -15,7 +14,10 @@ import dayjs from "dayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-
+import Typography from "@mui/material/Typography";
+import InputAdornment from "@mui/material/InputAdornment";
+import NavBtn from "../../common/component/Button/NavBtn/NavBtn";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 export default function FormPage1() {
   const [age, setAge] = React.useState("");
@@ -26,15 +28,15 @@ export default function FormPage1() {
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [dob, setDob] = React.useState(null);
-
+  const [value, setValue] = React.useState(null);
+  const hasValue = Boolean(value);
   return (
     <div className="content">
       <NavBar progressbar={<ProgressBar label={"My details"} />} />
-      <Box>
-        <h1>Let's get started by telling a little bit about yourself</h1>
-        <Box>
-          <div>
+      <Box sx={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',gap:'10px',flexWrap:'wrap'}}>
+        <h1 style={{color:'#18191F'}}>Let's get started by telling a little bit about yourself</h1>
+        <Box sx={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',gap:'10px',flexWrap:'wrap'}}>
+          <div style={{display:'flex',justifyContent:'center',alignContent:'center',flexDirection:'row'}}>
             <FormControl sx={{ m: 1, minWidth: 80 }}>
               <Select
                 value={age}
@@ -93,20 +95,51 @@ export default function FormPage1() {
             onChange={(e) => setLastName(e.target.value)}
           />
           <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <Box sx={{ width: 300 }}>
+            <Box>
+              {/* External Label */}
+              <Typography
+                variant="body2"
+                sx={{
+                  mb: 0.5,
+                  fontWeight: 500,
+                  color: hasValue ? "#000" : "#707070",
+                }}
+              >
+                My date of birth
+              </Typography>
+
+              {/* Date Field */}
               <DatePicker
-                label="My date of birth"
-                value={dob}
-                onChange={(newValue) => setDob(newValue)}
+                value={value}
+                onChange={(newValue) => setValue(newValue)}
                 format="DD-MM-YYYY"
-                maxDate={dayjs()} // prevent future dates
+                maxDate={dayjs()}
                 slotProps={{
                   textField: {
                     fullWidth: true,
                     InputProps: {
                       startAdornment: (
-                        <PersonIcon sx={{ mr: 1, color: "action.active" }} />
+                        <InputAdornment position="start">
+                          <PersonIcon
+                            sx={{ color: hasValue ? "#000" : "#707070" }}
+                          />
+                        </InputAdornment>
                       ),
+                    },
+                    sx: {
+                      "& .MuiOutlinedInput-root": {
+                        color: hasValue ? "#000" : "#707070",
+
+                        "& fieldset": {
+                          borderColor: hasValue ? "#000" : "#707070",
+                        },
+                        "&:hover fieldset": {
+                          borderColor: hasValue ? "#000" : "#707070",
+                        },
+                        "&.Mui-focused fieldset": {
+                          borderColor: "#000",
+                        },
+                      },
                     },
                   },
                 }}
@@ -114,6 +147,12 @@ export default function FormPage1() {
             </Box>
           </LocalizationProvider>
         </Box>
+        <NavBtn
+          label={"Next"}
+          icon={ArrowForwardIcon}
+          iconPosition="end"
+          sx={{ mt: "30px" }}
+        />
       </Box>
       <Footer />
     </div>
