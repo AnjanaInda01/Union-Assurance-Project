@@ -33,40 +33,6 @@ export default function ProgressBar({label}) {
       >
         {label}
       </Typography>
-
-      {/* Right: Step Progress
-      <Box sx={{ position: "relative", display: "inline-flex" }}>
-        <CircularProgress
-          variant="determinate"
-          value={(currentStep / totalSteps) * 100}
-          size={46}
-          thickness={5}
-          sx={{
-            color: "#FE5000",
-            backgroundColor: "#EEF2FF",
-            borderRadius: "50%",
-          }}
-        />
-        <Box
-          sx={{
-            top: 0,
-            left: 0,
-            bottom: 0,
-            right: 0,
-            position: "absolute",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Typography
-            variant="caption"
-            sx={{ fontWeight: 600, color: "#6B7280" }}
-          >
-            Step {currentStep} of {totalSteps}
-          </Typography>
-        </Box>
-      </Box> */}
     </Box>
   );
 }

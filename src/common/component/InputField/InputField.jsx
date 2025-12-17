@@ -4,7 +4,7 @@ import { TextField, InputAdornment, Typography, Box } from "@mui/material";
 export default function InputField({ label, icon, value, onChange }) {
   const hasValue = Boolean(value); // true when user types
   return (
-    <Box>
+    <Box sx={{display:'flex',flexDirection:'column',maxWidth: "100%",}}>
       {/* External Label */}
       <Typography
         variant="body2"

@@ -33,119 +33,171 @@ export default function FormPage1() {
   return (
     <div className="content">
       <NavBar progressbar={<ProgressBar label={"My details"} />} />
-      <Box sx={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',gap:'10px',flexWrap:'wrap'}}>
-        <h1 style={{color:'#18191F'}}>Let's get started by telling a little bit about yourself</h1>
-        <Box sx={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',gap:'10px',flexWrap:'wrap'}}>
-          <div style={{display:'flex',justifyContent:'center',alignContent:'center',flexDirection:'row'}}>
-            <FormControl sx={{ m: 1, minWidth: 80 }}>
-              <Select
-                value={age}
-                onChange={handleChange}
-                displayEmpty
-                autoWidth
-                inputProps={{ "aria-label": "Without label" }}
-                sx={{
-                  // text color
-                  color: age ? "#000" : "#707070",
-
-                  // outline
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: age ? "#000" : "#707070",
-                  },
-                  "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: age ? "#000" : "#707070",
-                  },
-                  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "#000",
-                  },
-
-                  // dropdown icon
-                  "& .MuiSelect-icon": {
-                    color: age ? "#000" : "#707070",
-                    right: "auto",
-                    left: 8,
-                  },
-
-                  // text padding (icon on left)
-                  "& .MuiSelect-select": {
-                    paddingLeft: "32px",
-                  },
-                }}
-              >
-                <MenuItem value="">
-                  <em style={{ color: "#707070" }}>None</em>
-                </MenuItem>
-                <MenuItem value={20}>Mr.</MenuItem>
-                <MenuItem value={21}>Mrs</MenuItem>
-                <MenuItem value={22}>Miss</MenuItem>
-              </Select>
-            </FormControl>
-
-            <InputField
-              label="First Name"
-              icon={<PersonIcon />}
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
-          </div>
-          <InputField
-            label="Last Name"
-            icon={<PersonIcon />}
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-          />
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <Box>
-              {/* External Label */}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "10px",
+          flexWrap: "wrap",
+          pt: 6,
+        }}
+      >
+        <Typography
+          variant="h4"
+          sx={{
+            fontWeight: 700,
+            textAlign: "center",
+            mb: 4,
+            maxWidth: 420,
+          }}
+        >
+          Let&apos;s get started by telling a little bit about yourself
+        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "10px",
+            flexWrap: "wrap",
+            width: "100%",
+            maxWidth: 400,
+            p: 2,
+          }}
+        >
+          <Box
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignContent: "center",
+              flexDirection: "row",
+              width: "100%",
+              gap:'5px'
+            }}
+          >
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
+              {/* Empty Typography placeholder */}
               <Typography
                 variant="body2"
-                sx={{
-                  mb: 0.5,
-                  fontWeight: 500,
-                  color: hasValue ? "#000" : "#707070",
-                }}
+                sx={{ height: "10px", color: "transparent" }} // transparent so it's empty but occupies space
               >
-                My date of birth
+                {/* Empty on purpose */}
               </Typography>
 
-              {/* Date Field */}
-              <DatePicker
-                value={value}
-                onChange={(newValue) => setValue(newValue)}
-                format="DD-MM-YYYY"
-                maxDate={dayjs()}
-                slotProps={{
-                  textField: {
-                    fullWidth: true,
-                    InputProps: {
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <PersonIcon
-                            sx={{ color: hasValue ? "#000" : "#707070" }}
-                          />
-                        </InputAdornment>
-                      ),
+              {/* FormControl with Select */}
+              <FormControl sx={{ m: 1, minWidth: 80 }}>
+                <Select
+                  value={age}
+                  onChange={handleChange}
+                  displayEmpty
+                  autoWidth
+                  inputProps={{ "aria-label": "Without label" }}
+                  sx={{
+                    color: age ? "#000" : "#707070",
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderColor: age ? "#000" : "#707070",
                     },
-                    sx: {
-                      "& .MuiOutlinedInput-root": {
-                        color: hasValue ? "#000" : "#707070",
+                    "&:hover .MuiOutlinedInput-notchedOutline": {
+                      borderColor: age ? "#000" : "#707070",
+                    },
+                    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "#000",
+                    },
+                    "& .MuiSelect-icon": {
+                      color: age ? "#000" : "#707070",
+                      right: "auto",
+                      left: 8,
+                    },
+                    "& .MuiSelect-select": {
+                      paddingLeft: "32px",
+                    },
+                  }}
+                >
+                  <MenuItem value="">
+                    <em style={{ color: "#707070" }}>None</em>
+                  </MenuItem>
+                  <MenuItem value={20}>Mr.</MenuItem>
+                  <MenuItem value={21}>Mrs</MenuItem>
+                  <MenuItem value={22}>Miss</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
 
-                        "& fieldset": {
-                          borderColor: hasValue ? "#000" : "#707070",
-                        },
-                        "&:hover fieldset": {
-                          borderColor: hasValue ? "#000" : "#707070",
-                        },
-                        "&.Mui-focused fieldset": {
-                          borderColor: "#000",
+            <Box sx={{ flexGrow: 1 }}>
+              <InputField
+                label="First Name"
+                icon={<PersonIcon />}
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+            </Box>
+          </Box>
+          <Box display={{ width: "100%"}}>
+            <InputField
+              label="Last Name"
+              icon={<PersonIcon />}
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              fullWidth
+            />
+          </Box>
+          <Box sx={{ width: "100%"}}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <Box sx={{ width: "100%" }}>
+                {/* External Label */}
+                <Typography
+                  variant="body2"
+                  sx={{
+                    mb: 0.5,
+                    fontWeight: 500,
+                    color: hasValue ? "#000" : "#707070",
+                  }}
+                >
+                  My date of birth
+                </Typography>
+
+                {/* Date Field */}
+                <DatePicker
+                  value={value}
+                  onChange={(newValue) => setValue(newValue)}
+                  format="DD-MM-YYYY"
+                  maxDate={dayjs()}
+                  slotProps={{
+                    textField: {
+                      fullWidth: true,
+                      InputProps: {
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <PersonIcon
+                              sx={{ color: hasValue ? "#000" : "#707070" }}
+                            />
+                          </InputAdornment>
+                        ),
+                      },
+                      sx: {
+                        "& .MuiOutlinedInput-root": {
+                          color: hasValue ? "#000" : "#707070",
+
+                          "& fieldset": {
+                            borderColor: hasValue ? "#000" : "#707070",
+                          },
+                          "&:hover fieldset": {
+                            borderColor: hasValue ? "#000" : "#707070",
+                          },
+                          "&.Mui-focused fieldset": {
+                            borderColor: "#000",
+                          },
                         },
                       },
                     },
-                  },
-                }}
-              />
-            </Box>
-          </LocalizationProvider>
+                  }}
+                />
+              </Box>
+            </LocalizationProvider>
+          </Box>
         </Box>
         <NavBtn
           label={"Next"}
