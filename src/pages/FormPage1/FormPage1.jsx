@@ -18,8 +18,10 @@ import Typography from "@mui/material/Typography";
 import InputAdornment from "@mui/material/InputAdornment";
 import NavBtn from "../../common/component/Button/NavBtn/NavBtn";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { useNavigate } from "react-router-dom";
 
 export default function FormPage1() {
+  const navigate = useNavigate();
   const [age, setAge] = React.useState("");
 
   const handleChange = (event) => {
@@ -204,6 +206,7 @@ export default function FormPage1() {
           icon={ArrowForwardIcon}
           iconPosition="end"
           sx={{ mt: "30px" }}
+          onClick={()=>navigate('/page-4')}
         />
       </Box>
       <Footer />

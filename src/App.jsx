@@ -1,5 +1,5 @@
+import { Navigate, Route, Routes } from 'react-router-dom'
 import './App.css'
-import ProgressBar from './common/component/ProgressShortBar/ProgressBar'
 import DashPage from './pages/DashPage/DashPage'
 import FormPage1 from './pages/FormPage1/FormPage1'
 import FormPage2 from './pages/FormPage2/FormPage2'
@@ -11,13 +11,16 @@ function App() {
 
 
   return (
-    <>
-    <DashPage/>
+    <Routes>
+      <Route path="*" element={<Navigate to="/Page-1"/>}/>
+      <Route path='/Page-1' element={<LoadingPage1/>}/>
+      <Route path='/Page-2' element={<LoadingPage2/>}/>
+      <Route path='/Page-3' element={<FormPage1/>}/>
+      <Route path='/Page-4' element={<FormPage2/>}/>
+      <Route path='/Page-5' element={<FormPage3/>}/>
+      <Route path='/Page-6' element={<DashPage/>}/>
+    </Routes>
     
-    
-    
-      
-    </>
   )
 }
 

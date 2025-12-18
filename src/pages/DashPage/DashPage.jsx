@@ -9,7 +9,8 @@ import "./style.css";
 import Footer from "../../common/component/Footer/Footer";
 import Card from "../../common/component/Card/Card";
 import imageList from "../../common/store/Store";
-
+import NavBtn from "../../common/component/Button/NavBtn/NavBtn";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 export default function DashPage() {
   return (
@@ -75,6 +76,12 @@ export default function DashPage() {
             <Typography>No data available</Typography>
           )}
         </Box>
+        <NavBtn
+          label={"Next"}
+          icon={ArrowForwardIcon}
+          iconPosition="end"
+          sx={{ mt: "30px" }}
+        />
       </Box>
       <Footer />
     </div>

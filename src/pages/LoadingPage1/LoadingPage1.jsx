@@ -7,8 +7,10 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Box, Typography } from "@mui/material";
 import loadImage from '../../assets/loadImg1.png'
 import ActionBtn from "../../common/component/Button/ActionBtn/ActionBtn";
+import { useNavigate } from "react-router-dom";
 
 export default function LoadingPage1() {
+  const navigate = useNavigate();
   return (
     <div className="content">
       <NavBar actionBtn={<ActionBtn lable="Already have a account" />} />
@@ -23,6 +25,7 @@ export default function LoadingPage1() {
             icon={ArrowForwardIcon}
             iconPosition="end"
             sx={{mt:'30px'}}
+            onClick={()=>navigate("/Page-2")}
           />
         </div>
         <div>

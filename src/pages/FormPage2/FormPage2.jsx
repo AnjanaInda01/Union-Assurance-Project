@@ -10,8 +10,10 @@ import WomanIcon from "@mui/icons-material/Woman";
 import { useState } from "react";
 import NavBtn from "../../common/component/Button/NavBtn/NavBtn";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { useNavigate } from "react-router-dom";
 
 export default function FormPage2() {
+  const navigate = useNavigate();
   const [wifeName, setWifeName] = useState("");
   return (
     <div className="content">
@@ -55,6 +57,7 @@ export default function FormPage2() {
           icon={ArrowForwardIcon}
           iconPosition="end"
           sx={{ mt: "30px" }}
+          onClick={()=>navigate('/page-5')}
         />
       </Box>
       <Footer />

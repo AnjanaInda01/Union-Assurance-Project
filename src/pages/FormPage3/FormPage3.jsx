@@ -10,8 +10,10 @@ import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew";
 import NavBtn from "../../common/component/Button/NavBtn/NavBtn";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import InputAge from "../../common/component/InputField/InputAge";
+import { useNavigate } from "react-router-dom";
 
 export default function FormPage3() {
+  const navigate = useNavigate();
   const [value, setValue] = useState(0);
   const [childName, setChildName] = useState("");
   return (
@@ -113,6 +115,7 @@ export default function FormPage3() {
           icon={ArrowForwardIcon}
           iconPosition="end"
           sx={{ mt: "30px" }}
+          onClick={()=>navigate('/page-6')}
         />
       </Box>
       <Footer />

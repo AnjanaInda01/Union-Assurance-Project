@@ -6,7 +6,7 @@ export default function NavBtn({
   icon: Icon,
   iconPosition = "end",
   sx = {},
-  ...props
+  onClick
 }) {
   return (
     <Button
@@ -23,7 +23,7 @@ export default function NavBtn({
         },
         ...sx,
       }}
-      {...props}
+      onClick={onClick}
     >
       {label}
     </Button>
