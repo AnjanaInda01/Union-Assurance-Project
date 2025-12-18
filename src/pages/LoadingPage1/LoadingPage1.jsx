@@ -11,7 +11,7 @@ import ActionBtn from "../../common/component/Button/ActionBtn/ActionBtn";
 export default function LoadingPage1() {
   return (
     <div className="content">
-      <NavBar actionBtn={<ActionBtn lable="Already have a account"/>} />
+      <NavBar actionBtn={<ActionBtn lable="Already have a account" />} />
       <Box sx={{display:'flex', alignItems:'center', justifyContent:'space-between', paddingLeft:'100px'}}>
         <div style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'start'}}>
           <h1 style={{ fontSize: "60px" }}>Life Insurance Made Simple</h1>
