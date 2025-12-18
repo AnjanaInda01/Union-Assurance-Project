@@ -8,6 +8,8 @@ import Switch from "../../common/component/Switch/Switch";
 import InputField from "../../common/component/InputField/InputField";
 import WomanIcon from "@mui/icons-material/Woman";
 import { useState } from "react";
+import NavBtn from "../../common/component/Button/NavBtn/NavBtn";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 export default function FormPage2() {
   const [wifeName, setWifeName] = useState("");
@@ -22,7 +24,7 @@ export default function FormPage2() {
           alignItems: "center",
           gap: "10px",
           flexWrap: "wrap",
-          pt: 6,
+          pt: 4,
         }}
       >
         <Typography>My name is Anjana</Typography>
@@ -32,19 +34,27 @@ export default function FormPage2() {
           sx={{
             fontWeight: 700,
             textAlign: "center",
-            mb: 4,
+            mb: 3,
+            mt:2,
             maxWidth: 420,
           }}
         >
           Are you married?
         </Typography>
         <Switch />
+        <div></div>
         <InputField
           icon={<WomanIcon />}
           label={"My wife is"}
           value={wifeName}
           onChange={(e) => setWifeName(e.target.value)}
           fullWidth
+        />
+        <NavBtn
+          label={"Next"}
+          icon={ArrowForwardIcon}
+          iconPosition="end"
+          sx={{ mt: "30px" }}
         />
       </Box>
       <Footer />

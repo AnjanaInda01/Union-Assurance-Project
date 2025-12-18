@@ -41,7 +41,7 @@ export default function FormPage1() {
           alignItems: "center",
           gap: "10px",
           flexWrap: "wrap",
-          pt: 6,
+          pt: 4,
         }}
       >
         <Typography

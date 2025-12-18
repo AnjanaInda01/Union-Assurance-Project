@@ -4,7 +4,7 @@ import { TextField, InputAdornment, Typography, Box } from "@mui/material";
 export default function InputField({ label, icon, value, onChange }) {
   const hasValue = Boolean(value); // true when user types
   return (
-    <Box sx={{display:'flex',flexDirection:'column',maxWidth: "100%",}}>
+    <Box sx={{ display: "flex", flexDirection: "column", maxWidth: "100%" }}>
       {/* External Label */}
       <Typography
         variant="body2"
@@ -12,7 +12,6 @@ export default function InputField({ label, icon, value, onChange }) {
           mb: 0.5,
           fontWeight: 500,
           color: hasValue ? "#000" : "#707070",
-          
         }}
       >
         {label}
@@ -47,7 +46,9 @@ export default function InputField({ label, icon, value, onChange }) {
             "&.Mui-focused fieldset": {
               borderColor: "#000",
             },
-            borderRadius:'10px'
+            borderRadius: "10px",
+            boxShadow: "0 6px 14px rgba(0,0,0,0.15)",
+            overflow: "hidden", // ⭐ IMPORTANT
           },
         }}
       />
