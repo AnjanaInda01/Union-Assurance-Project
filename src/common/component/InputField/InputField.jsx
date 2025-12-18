@@ -12,6 +12,7 @@ export default function InputField({ label, icon, value, onChange }) {
           mb: 0.5,
           fontWeight: 500,
           color: hasValue ? "#000" : "#707070",
+          
         }}
       >
         {label}
@@ -46,6 +47,7 @@ export default function InputField({ label, icon, value, onChange }) {
             "&.Mui-focused fieldset": {
               borderColor: "#000",
             },
+            borderRadius:'10px'
           },
         }}
       />
