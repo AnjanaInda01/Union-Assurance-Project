@@ -30,7 +30,6 @@ export default function LoadingPage1() {
           
         </div>
       </Box>
-
       <Footer />
     </div>
   );
