@@ -15,7 +15,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 export default function DashPage() {
   return (
     <div className="content">
-      <NavBar progressbar={<ProgressBar label={"My goals"} />} />
+      <NavBar progressbar={<ProgressBar label={"My goals"} step={3} totalSteps={3}/>} />
       <Box
         sx={{
           display: "flex",

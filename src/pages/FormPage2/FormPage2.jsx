@@ -36,7 +36,7 @@ export default function FormPage2() {
 
   return (
     <div className="content">
-      <NavBar progressbar={<ProgressBar label={"My details"} />} />
+      <NavBar progressbar={<ProgressBar label={"My details"} step={2} totalSteps={3}/>} />
       <Box
         sx={{
           display: "flex",

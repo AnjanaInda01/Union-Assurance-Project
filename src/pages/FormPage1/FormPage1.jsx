@@ -63,7 +63,7 @@ export default function FormPage1() {
 
   return (
     <div className="content">
-      <NavBar progressbar={<ProgressBar label={"My details"} />} />
+      <NavBar progressbar={<ProgressBar label={"My details"} step={1} totalSteps={3} />} />
       <Box
         sx={{
           display: "flex",
