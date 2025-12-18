@@ -1,37 +1,66 @@
 import * as React from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import dayjs from "dayjs";
 import NavBar from "../../common/component/NavBar/NavBar";
 import ProgressBar from "../../common/component/ProgressShortBar/ProgressBar";
-import "./style.css";
 import Footer from "../../common/component/Footer/Footer";
-import { Box } from "@mui/material";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+import {
+  Box,
+  Typography,
+  MenuItem,
+  FormControl,
+  Select,
+  InputAdornment,
+} from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import InputField from "../../common/component/InputField/InputField";
-import { useState } from "react";
-import dayjs from "dayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import Typography from "@mui/material/Typography";
-import InputAdornment from "@mui/material/InputAdornment";
 import NavBtn from "../../common/component/Button/NavBtn/NavBtn";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { useNavigate } from "react-router-dom";
+import { setUserDetails } from "../../redux/slices/userSlice";
+import "./style.css";
 
 export default function FormPage1() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [age, setAge] = React.useState("");
 
-  const handleChange = (event) => {
-    setAge(event.target.value);
+  // States
+  const [title, setTitle] = React.useState("");
+  const [firstName, setFirstName] = React.useState("");
+  const [lastName, setLastName] = React.useState("");
+  const [dob, setDob] = React.useState(null);
+
+  // For styling
+  const hasValue = Boolean(dob);
+
+  // Age calculation
+  const calculateAge = (birthDate) => {
+    return dayjs().diff(dayjs(birthDate), "year");
   };
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [value, setValue] = React.useState(null);
-  const hasValue = Boolean(value);
+  // Form validation
+  const isFormValid = title && firstName.trim() && lastName.trim() && dob;
+
+  // Handle Next
+  const handleNext = () => {
+    const age = calculateAge(dob);
+
+    dispatch(
+      setUserDetails({
+        title,
+        firstName,
+        lastName,
+        dob: dob.toISOString(),
+        age,
+      })
+    );
+
+    navigate("/page-4");
+  };
+
   return (
     <div className="content">
       <NavBar progressbar={<ProgressBar label={"My details"} />} />
@@ -55,8 +84,9 @@ export default function FormPage1() {
             maxWidth: 420,
           }}
         >
-          Let&apos;s get started by telling a little bit about yourself
+          Let's get started by telling a little bit about yourself
         </Typography>
+
         <Box
           sx={{
             display: "flex",
@@ -70,6 +100,7 @@ export default function FormPage1() {
             p: 2,
           }}
         >
+          {/* Title + First Name */}
           <Box
             style={{
               display: "flex",
@@ -77,39 +108,35 @@ export default function FormPage1() {
               alignContent: "center",
               flexDirection: "row",
               width: "100%",
-              gap:'5px'
+              gap: "5px",
             }}
           >
             <Box sx={{ display: "flex", flexDirection: "column", gap: 0.5 }}>
-              {/* Empty Typography placeholder */}
               <Typography
                 variant="body2"
-                sx={{ height: "10px", color: "transparent" }} // transparent so it's empty but occupies space
-              >
-                {/* Empty on purpose */}
-              </Typography>
+                sx={{ height: "10px", color: "transparent" }}
+              ></Typography>
 
-              {/* FormControl with Select */}
               <FormControl sx={{ m: 1, minWidth: 80 }}>
                 <Select
-                  value={age}
-                  onChange={handleChange}
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
                   displayEmpty
                   autoWidth
                   inputProps={{ "aria-label": "Without label" }}
                   sx={{
-                    color: age ? "#000" : "#707070",
+                    color: title ? "#000" : "#707070",
                     "& .MuiOutlinedInput-notchedOutline": {
-                      borderColor: age ? "#000" : "#707070",
+                      borderColor: title ? "#000" : "#707070",
                     },
                     "&:hover .MuiOutlinedInput-notchedOutline": {
-                      borderColor: age ? "#000" : "#707070",
+                      borderColor: title ? "#000" : "#707070",
                     },
                     "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
                       borderColor: "#000",
                     },
                     "& .MuiSelect-icon": {
-                      color: age ? "#000" : "#707070",
+                      color: title ? "#000" : "#707070",
                       right: "auto",
                       left: 8,
                     },
@@ -121,9 +148,9 @@ export default function FormPage1() {
                   <MenuItem value="">
                     <em style={{ color: "#707070" }}>None</em>
                   </MenuItem>
-                  <MenuItem value={20}>Mr.</MenuItem>
-                  <MenuItem value={21}>Mrs</MenuItem>
-                  <MenuItem value={22}>Miss</MenuItem>
+                  <MenuItem value="Mr">Mr.</MenuItem>
+                  <MenuItem value="Mrs">Mrs.</MenuItem>
+                  <MenuItem value="Miss">Miss</MenuItem>
                 </Select>
               </FormControl>
             </Box>
@@ -137,7 +164,9 @@ export default function FormPage1() {
               />
             </Box>
           </Box>
-          <Box display={{ width: "100%"}}>
+
+          {/* Last Name */}
+          <Box display={{ width: "100%" }}>
             <InputField
               label="Last Name"
               icon={<PersonIcon />}
@@ -146,10 +175,11 @@ export default function FormPage1() {
               fullWidth
             />
           </Box>
-          <Box sx={{ width: "100%"}}>
+
+          {/* DOB */}
+          <Box sx={{ width: "100%" }}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <Box sx={{ width: "100%" }}>
-                {/* External Label */}
                 <Typography
                   variant="body2"
                   sx={{
@@ -161,10 +191,9 @@ export default function FormPage1() {
                   My date of birth
                 </Typography>
 
-                {/* Date Field */}
                 <DatePicker
-                  value={value}
-                  onChange={(newValue) => setValue(newValue)}
+                  value={dob}
+                  onChange={(newValue) => setDob(newValue)}
                   format="DD-MM-YYYY"
                   maxDate={dayjs()}
                   slotProps={{
@@ -182,7 +211,6 @@ export default function FormPage1() {
                       sx: {
                         "& .MuiOutlinedInput-root": {
                           color: hasValue ? "#000" : "#707070",
-
                           "& fieldset": {
                             borderColor: hasValue ? "#000" : "#707070",
                           },
@@ -201,12 +229,15 @@ export default function FormPage1() {
             </LocalizationProvider>
           </Box>
         </Box>
+
+        {/* Next Button */}
         <NavBtn
           label={"Next"}
           icon={ArrowForwardIcon}
           iconPosition="end"
           sx={{ mt: "30px" }}
-          onClick={()=>navigate('/page-4')}
+          disabled={!isFormValid}
+          onClick={handleNext}
         />
       </Box>
       <Footer />

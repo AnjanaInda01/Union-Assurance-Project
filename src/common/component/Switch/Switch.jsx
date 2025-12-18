@@ -9,12 +9,15 @@ import {
 import BoyIcon from "@mui/icons-material/Boy";
 import WcIcon from "@mui/icons-material/Wc";
 
-export default function Switch() {
-  const [status, setStatus] = React.useState("single");
+export default function Switch({ value = "single", onChange }) {
+  const [status, setStatus] = React.useState(value);
 
   const handleChange = (event, newStatus) => {
     if (newStatus !== null) {
       setStatus(newStatus);
+      if (onChange) {
+        onChange(newStatus === "married"); // true if married, false if single
+      }
     }
   };
 
