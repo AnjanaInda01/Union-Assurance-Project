@@ -49,10 +49,10 @@ export default function FormPage2() {
         }}
       >
         <Typography>
-          My name is {user.firstName} {user.lastName}
+          My name is <span style={{color:'#FF6347'}}>{user.firstName} {user.lastName}</span> 
         </Typography>
         <Typography>
-          And I am {user.title === "Mr" ? "male" : "female"} of {user.age} years
+          And I am <span style={{color:'#FF6347'}}>{user.title === "Mr" ? "male" : "female"}</span>  of <span style={{color:'#FF6347'}}>{user.age}</span>  years
           old.
         </Typography>
         <Typography
