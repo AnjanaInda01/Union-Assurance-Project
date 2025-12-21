@@ -24,13 +24,12 @@ export default function FormPage2() {
   const isFormValid = !married || (married && wifeName.trim() !== "");
 
   const handleNext = () => {
-    // Save marital details in Redux
     dispatch(setMaritalDetails({ married, wifeName: married ? wifeName : "" }));
 
     if (married) {
-      navigate("/page-5"); // Married → go to page 3 (children)
+      navigate("/page-5"); 
     } else {
-      navigate("/page-6"); // Single → skip page 3
+      navigate("/page-6"); 
     }
   };
 
@@ -84,7 +83,7 @@ export default function FormPage2() {
           icon={ArrowForwardIcon}
           iconPosition="end"
           sx={{ mt: "30px" }}
-          disabled={married && wifeName.trim() === ""} //only disabled if married + empty wife name
+          disabled={married && wifeName.trim() === ""} 
           onClick={handleNext}
         />
       </Box>

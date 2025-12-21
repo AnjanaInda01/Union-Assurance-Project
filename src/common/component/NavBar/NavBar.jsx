@@ -12,9 +12,6 @@ export default function NavBar({actionBtn,progressbar}) {
       sx={{
         top: 0,
         backgroundColor: "white",
-        //   border: "none",
-        color: "black",
-        //   boxShadow: "none",
         zIndex: 1200,
       }}
     >

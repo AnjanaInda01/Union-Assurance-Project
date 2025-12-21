@@ -16,7 +16,7 @@ export default function Switch({ value = "single", onChange }) {
     if (newStatus !== null) {
       setStatus(newStatus);
       if (onChange) {
-        onChange(newStatus === "married"); // true if married, false if single
+        onChange(newStatus === "married"); 
       }
     }
   };
@@ -35,10 +35,10 @@ export default function Switch({ value = "single", onChange }) {
           backgroundColor: "#fff",
           borderRadius: "18px",
           boxShadow: "0 6px 14px rgba(0,0,0,0.15)",
-          overflow: "hidden", // ⭐ IMPORTANT
+          overflow: "hidden", 
         }}
       >
-        {/* Single */}
+
         <ToggleButton
           value="single"
           disableRipple
@@ -49,7 +49,7 @@ export default function Switch({ value = "single", onChange }) {
             gap: 1,
             textTransform: "none",
             fontWeight: 500,
-            borderRadius: "11px 0 0 11px", // ⭐ LEFT ONLY
+            borderRadius: "11px 0 0 11px",
             color: status === "single" ? "#fff" : "#000",
             backgroundColor: status === "single" ? "#000" : "transparent",
 
@@ -66,7 +66,7 @@ export default function Switch({ value = "single", onChange }) {
           Single
         </ToggleButton>
 
-        {/* Married */}
+
         <ToggleButton
           value="married"
           disableRipple
@@ -77,7 +77,7 @@ export default function Switch({ value = "single", onChange }) {
             gap: 1,
             textTransform: "none",
             fontWeight: 500,
-            borderRadius: "0 11px 11px 0", // ⭐ RIGHT ONLY
+            borderRadius: "0 11px 11px 0", 
             color: status === "married" ? "#fff" : "#000",
             backgroundColor: status === "married" ? "#ff6a00" : "transparent",
 

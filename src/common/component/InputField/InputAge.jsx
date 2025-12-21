@@ -10,14 +10,14 @@ import {
 const AgeContainer = styled(Box)({
   backgroundColor: "#C4C4C4",
   color: "#FFFFFF",
-  height: "37px", // Fixed height to allow for vertical margin
+  height: "37px", 
   display: "flex",
   alignItems: "center",
   padding: "0 12px",
-  borderRadius: "10px", // Round corners on all sides
+  borderRadius: "10px", 
   fontSize: "14px",
   whiteSpace: "nowrap",
-  marginRight: "6px", // Margin on the right side
+  marginRight: "6px", 
 });
 
 export default function InputAge() {
@@ -54,7 +54,7 @@ export default function InputAge() {
             borderColor: "#969BAB",
             borderWidth: "1px",
           },
-          // Adjust padding to ensure the cursor doesn't hit the gray box
+
           paddingRight: "4px",
         }}
         endAdornment={

@@ -27,24 +27,19 @@ export default function FormPage1() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // States
   const [title, setTitle] = React.useState("");
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
   const [dob, setDob] = React.useState(null);
 
-  // For styling
   const hasValue = Boolean(dob);
 
-  // Age calculation
   const calculateAge = (birthDate) => {
     return dayjs().diff(dayjs(birthDate), "year");
   };
 
-  // Form validation
   const isFormValid = title && firstName.trim() && lastName.trim() && dob;
 
-  // Handle Next
   const handleNext = () => {
     const age = calculateAge(dob);
 
@@ -63,7 +58,11 @@ export default function FormPage1() {
 
   return (
     <div className="content">
-      <NavBar progressbar={<ProgressBar label={"My details"} step={1} totalSteps={3} />} />
+      <NavBar
+        progressbar={
+          <ProgressBar label={"My details"} step={1} totalSteps={3} />
+        }
+      />
       <Box
         sx={{
           display: "flex",
@@ -100,7 +99,6 @@ export default function FormPage1() {
             p: 2,
           }}
         >
-          {/* Title + First Name */}
           <Box
             style={{
               display: "flex",
@@ -165,7 +163,6 @@ export default function FormPage1() {
             </Box>
           </Box>
 
-          {/* Last Name */}
           <Box display={{ width: "100%" }}>
             <InputField
               label="Last Name"
@@ -176,7 +173,6 @@ export default function FormPage1() {
             />
           </Box>
 
-          {/* DOB */}
           <Box sx={{ width: "100%" }}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <Box sx={{ width: "100%" }}>
@@ -230,7 +226,6 @@ export default function FormPage1() {
           </Box>
         </Box>
 
-        {/* Next Button */}
         <NavBtn
           label={"Next"}
           icon={ArrowForwardIcon}

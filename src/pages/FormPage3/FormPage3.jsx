@@ -99,7 +99,7 @@ export default function FormPage3() {
           <Slider
             sx={{
               "& .MuiSlider-thumb": {
-                height: 16, // smaller thumb
+                height: 16, 
                 width: 16,
                 backgroundColor: "#FE5000",
                 "&:hover": {
@@ -107,16 +107,16 @@ export default function FormPage3() {
                 },
               },
               "& .MuiSlider-track": {
-                height: 4, // thinner track
+                height: 4,
                 backgroundColor: "#FE5000",
               },
               "& .MuiSlider-rail": {
-                height: 4, // thinner rail
+                height: 4, 
                 opacity: 0.3,
                 backgroundColor: "#FE5000",
               },
               "& .MuiSlider-mark": {
-                display: "none", // hide marks
+                display: "none", 
               },
             }}
             value={numChildren}

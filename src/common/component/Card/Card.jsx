@@ -14,7 +14,7 @@ export default function Card({ image }) {
         cursor: "pointer",
       }}
     >
-      {/* Background Image */}
+
       <Box
         component="img"
         src={image.src}
@@ -30,16 +30,15 @@ export default function Card({ image }) {
         }}
       />
 
-      {/* Dark Overlay */}
       <Box
         sx={{
           position: "absolute",
-          inset: 0, // top, right, bottom, left = 0
-          bgcolor: "rgba(0, 0, 0, 0.35)", // darkness level
+          inset: 0, 
+          bgcolor: "rgba(0, 0, 0, 0.35)",
         }}
       />
 
-      {/* Text Overlay */}
+
       <Box
         sx={{
           position: "absolute",

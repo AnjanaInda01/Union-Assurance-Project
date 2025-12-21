@@ -9,7 +9,7 @@ const iconStyle = {
   width: 40,
   height: 40,
   border: "none",
-  borderRadius: "50%", // 👈 makes it round
+  borderRadius: "50%", 
   backgroundColor:'#F0F0F0',
   display: "flex",
   alignItems: "center",

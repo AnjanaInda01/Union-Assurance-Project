@@ -10,17 +10,17 @@ export default function NormalBtn({
       variant="contained"
       sx={{
         backgroundColor: "#E6E6E6",
-        color: "#707070", // Changed to dark gray for visibility; use "white" if preferred
+        color: "#707070",
         borderRadius: "20px",
         px: 3,
-        textTransform: "none", // Prevents MUI from making text all caps
-        boxShadow: "none", // Optional: cleaner look for gray buttons
+        textTransform: "none",
+        boxShadow: "none", 
         "&:hover": {
           backgroundColor: "#969BAB",
-          color: "white", // Changes text to white on hover for contrast
-        }, // Spread incoming sx prop last so it can override defaults
+          color: "white", 
+        }, 
       }}
-      {...props} // Spreads remaining props like onClick, disabled, type, etc.
+      {...props} 
     >
       {label}
     </Button>

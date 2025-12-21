@@ -23,25 +23,24 @@ export default function ProgressBar({
         boxShadow: "0px 10px 25px rgba(0,0,0,0.08)",
         maxWidth: 450,
         mx: "auto",
-        gap: 2, // 🔥 controlled spacing
+        gap: 2, 
       }}
     >
-      {/* Back button */}
+
       <IconButton size="small" onClick={() => navigate(-1)}>
         <ArrowBackIcon />
       </IconButton>
 
-      {/* Label + Progress */}
       <Box
         sx={{
           display: "flex",
           alignItems: "center",
-          gap: 2, // 🔥 perfect spacing
+          gap: 2, 
           flexGrow: 1,
           justifyContent: "space-between",
         }}
       >
-        {/* Label */}
+
         <Typography
           sx={{
             fontWeight: 600,
@@ -52,7 +51,7 @@ export default function ProgressBar({
           {label}
         </Typography>
 
-        {/* Circular Progress */}
+
         <Box sx={{ position: "relative", width: size, height: size }}>
           <CircularProgress
             variant="determinate"
@@ -80,7 +79,6 @@ export default function ProgressBar({
             }}
           />
 
-          {/* Center Text */}
           <Box
             sx={{
               position: "absolute",
